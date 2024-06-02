@@ -18,7 +18,12 @@ function App() {
   const handleStart = () => {
     setIsRunning(true);
     const intervalId = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
+      if (seconds === 0) {
+        setIsRunning(false);
+        handlePause();
+      } else {
+        setSeconds((prevSeconds) => prevSeconds - 1);
+      }
     }, 1000);
     setIntervalId(intervalId);
   };
