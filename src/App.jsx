@@ -29,21 +29,14 @@ function App() {
         }),
       1000
     );
-    //   if (seconds <= 0) {
-    //     setSeconds(0);
-    //     clearInterval(intervalId);
-    //   } else {
-    //     setSeconds((prevSeconds) => prevSeconds - 1);
-    //   }
-    // }, 1000);
-    // setIntervalId(intervalId);
+    setIntervalId(intervalId);
   };
-  //handPause pause the timer
+
   const handlePause = () => {
-    //setIsRunning to false
+    // console.log("Pausing timer...");
     setIsRunning(false);
-    //clear the interval using the stored intervalid
     clearInterval(intervalId);
+    // console.log("IntervalId cleared:", intervalId);
   };
 
   const handleReset = () => {
