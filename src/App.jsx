@@ -17,14 +17,26 @@ function App() {
   //handleStart function start the time, the prevSeconds is the seconds inputed at run time, which will be decrease by 1 every second.
   const handleStart = () => {
     setIsRunning(true);
-    const intervalId = setInterval(() => {
-      if (seconds === 0) {
-        handlePause();
-      } else {
-        setSeconds((prevSeconds) => prevSeconds - 1);
-      }
-    }, 1000);
-    setIntervalId(intervalId);
+    const intervalId = setInterval(
+      () =>
+        setSeconds((prevSeconds) => {
+          if (prevSeconds <= 0) {
+            clearInterval(intervalId);
+            return 0;
+          } else {
+            return prevSeconds - 1;
+          }
+        }),
+      1000
+    );
+    //   if (seconds <= 0) {
+    //     setSeconds(0);
+    //     clearInterval(intervalId);
+    //   } else {
+    //     setSeconds((prevSeconds) => prevSeconds - 1);
+    //   }
+    // }, 1000);
+    // setIntervalId(intervalId);
   };
   //handPause pause the timer
   const handlePause = () => {
